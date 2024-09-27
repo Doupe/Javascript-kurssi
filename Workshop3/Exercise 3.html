@@ -1,0 +1,43 @@
+<h2>Exercise 3</h2>
+<p>Below you will see a simple form.</p>
+<ul>
+    <li>Add an onfocus event to the textarea below. When the user enters the textarea, it should show a text saying: "Please fill in the form with proper data." You can try modifying the background color of the box as well.</li>
+    <li>Try to use onkeydown event on the textarea. It should calculate the number of keypresses and output them on the screen. Could you think of other smart ways to use it?</li>
+    <li>When the form button is clicked, check if the textarea is empty. Notify the user with an appropriate message. HINT: You can access the Textarea using the following command: <i>document.getElementById("textdata").value</i>. We will study forms deeper in Workshops 4 and 5.</li>
+</ul>
+
+<form id="myForm" onsubmit="return validateForm()">
+    <textarea id="textdata" 
+              onfocus="focusHandler()" 
+              onkeydown="countCharacters()"></textarea><br>
+    <span id="charcount">Keypresses : 0</span><br>
+    <button type="submit">Send me</button>
+</form>
+
+<hr/>
+
+<script>
+    // Focus
+    function focusHandler() {
+        const textarea = document.getElementById("textdata");
+        textarea.style.backgroundColor = "#e0f7fa"; // Change background color
+        alert("Please fill in the form with proper data.");
+    }
+
+    // Painalluslaskin
+    function countCharacters() {
+        const textarea = document.getElementById("textdata");
+        const charCountDisplay = document.getElementById("charcount");
+        charCountDisplay.textContent = "Character count: " + textarea.value.length;
+    }
+
+    // Validaatio
+    function validateForm() {
+        const textareaValue = document.getElementById("textdata").value;
+        if (textareaValue.trim() === "") {
+            alert("Please fill in the textarea before submitting.");
+            return false; 
+        }
+        return true; 
+    }
+</script>
